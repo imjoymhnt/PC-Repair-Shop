@@ -1,17 +1,13 @@
 <%- include('partials/header') -%>
 
 <div class="container">
+  <%services.forEach((service) => {%>
+
   <div class="jumbotron">
-    <h3>Service One</h3>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos accusamus
-      tempore iusto assumenda ea aliquid, officia veritatis voluptas error
-      magnam quos doloribus nulla quod, animi id vero harum mollitia repudiandae
-      nostrum quia. Cum, officiis dignissimos esse ab nam impedit consectetur
-      exercitationem fuga consequatur delectus corporis est quis labore quae
-      modi?
-    </p>
-    <strong>Price: <span>2000 Rs</span></strong>
+    <h3><%=service.title%></h3>
+    <p><%=service.body%></p>
+    <strong>Price: <span><%=service.price%> Rs</span></strong>
   </div>
+  <%})%>
 </div>
 <%- include('partials/footer') -%>

@@ -29,7 +29,16 @@ app.get("/about", (req, res) => {
   res.render("about");
 });
 app.get("/services", (req, res) => {
-  res.render("services");
+  Service.find((err, foundServices) => {
+    if (err) {
+      console.log(err);
+      res.redirect("/");
+    } else {
+      if (foundServices) {
+        res.render("services", { services: foundServices });
+      }
+    }
+  });
 });
 app.get("/createService", (req, res) => {
   res.render("createService");
