@@ -1,7 +1,9 @@
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
+const nodemailer = require("nodemailer");
 
 const app = express();
 
@@ -42,6 +44,36 @@ app.get("/services", (req, res) => {
 });
 app.get("/createService", (req, res) => {
   res.render("createService");
+});
+
+app.get("/contact", (req, res) => {
+  res.render("contact");
+});
+
+app.post("/contact", (req, res) => {
+  const transporter = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+      user: process.env.email,
+      pass: process.env.pass,
+    },
+  });
+
+  var mailOptions = {
+    from: '"imjoymhnt" <onlineformfillup3@gmail.com>',
+    to: "mitul.joy.mahanta@gmail.com",
+    subject: "Hello from PC Repair",
+    text: req.body.name + "from " + req.body.email + "says " + req.body.message,
+  };
+
+  transporter.sendMail(mailOptions, (err, info) => {
+    if (err) {
+      console.log("error");
+    } else {
+      console.log("Message send");
+      res.redirect("/");
+    }
+  });
 });
 
 app.post("/createService", (req, res) => {

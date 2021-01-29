@@ -1,0 +1,43 @@
+<%- include('partials/header') -%>
+
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <form class="jumbotron" action="/contact" method="POST">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Name</label>
+        <input
+          type="text"
+          name="name"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input
+          type="email"
+          name="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Message</label>
+        <textarea
+          class="form-control"
+          name="message"
+          id="exampleInputPassword1"
+          cols="30"
+          rows="10"
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg">Send</button>
+    </form>
+  </div>
+  <div class="col-md-2"></div>
+</div>
+
+<%- include('partials/footer') -%>
